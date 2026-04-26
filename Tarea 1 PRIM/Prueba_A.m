@@ -3,21 +3,20 @@ function Prueba_A()
     IMG = dicomread('C:\Users\nncc2\OneDrive\Documentos\Tareas PRIM\Tarea 1 PRIM\IMAGENES_TAREA1\DATOS_TAREA1_PREGUNTA_A\MR-cerebro-ANON\IM.dcm');
 
     IMG = double(IMG);
-    disp(size(IMG));
+    
 
     VOL = squeeze(IMG);
+    disp("Dimensiones volumen original: ")
+    disp(size(IMG));
+    disp("Dimensiones volumen escalado: ")
     disp(size(VOL));
 
     VOL_OUT = trilineal_CHEHADE_CASIVAR(VOL, 1.2);
     disp(size(VOL_OUT));
 
-    % Vista volumétrica 3D
-    %figure('Name','Volumen Escalado - 3D');
-    %volshow(VOL_OUT);
+    figure('Name','Volumen Escalado - 3D');
+    volshow(VOL_OUT);
 
-    % Vista por cortes
-    figure('Name','Volumen Original - Cortes');
-    sliceViewer(VOL);
     figure('Name','Volumen Escalado - Cortes');
     sliceViewer(VOL_OUT);
 
